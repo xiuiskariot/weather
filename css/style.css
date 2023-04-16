@@ -5,14 +5,14 @@
 }
 
 body {
-  background:  linear-gradient(150.64deg, #8E2DE2 0%, #4A00E0 100%);
+  background: linear-gradient(150.64deg, #8e2de2 0%, #4a00e0 100%);
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 400;
   height: 100vh;
- display: flex;
- justify-content: space-between;
- flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 header {
@@ -27,7 +27,7 @@ header {
   font-weight: 700;
   font-size: 72px;
   line-height: 87px;
-  color: #FFFFFF
+  color: #ffffff;
 }
 
 .forecast {
@@ -38,7 +38,7 @@ header {
 }
 
 .change-city {
-  font-family: 'Mulish';
+  font-family: "Mulish";
   font-style: italic;
   font-weight: 400;
   font-size: 17px;
@@ -46,10 +46,38 @@ header {
   color: rgba(255, 255, 255, 0.5);
 }
 
-
 main {
   display: flex;
   flex-direction: column;
+}
+
+.inp-city {
+  background: none;
+  border: none;
+  border-bottom: 2px rgba(255, 255, 255, 0.75) solid;
+  min-width: 326px;
+  padding: 6px 16px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 36px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 36px;
+}
+
+.inp-city:focus {
+  outline: none;
+}
+
+.enter-city {
+  background: #ffffff;
+  border: none;
+  border-radius: 8px;
+  width: 140px;
+  height: 48px;
+  font-size: 20px;
+  line-height: 36px;
+  color: #4c01e0;
+  cursor: pointer;
 }
 
 footer {
@@ -59,3 +87,7 @@ footer {
   color: rgba(255, 255, 255, 0.5);
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
