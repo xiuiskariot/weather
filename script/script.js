@@ -17,6 +17,7 @@ function success(position) {
   )
     .then((objWeather) => objWeather.json()) //парсим промис и обрабатываем его до объекта в следующем зен
     .then((dataWeather) => {
+      console.log(dataWeather);
       renderForecast(dataWeather);
     });
 }
@@ -37,11 +38,11 @@ function renderForecast(obj) {
 
   const linkChange = wrapper.querySelector(".change-city");
 
-  linkChange.addEventListener("click", searchCity);
+  linkChange.addEventListener("click", inputCity);
 }
 
 //функция поиска по городу
-function searchCity() {
+function inputCity() {
   wrapper.innerHTML = `
       <form> 
         <input type="text" class="inp-city" placeholder="Type your city here">
@@ -53,21 +54,31 @@ function searchCity() {
   let inpCity = wrapper.querySelector(".inp-city");
   inpCity.addEventListener("change", () => {
     let inpValue = inpCity.value.toLowerCase().trim();
-
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${inpValue}&appid=b9e70f2f2cb65811737840f12d265388`
-    )
-      .then((obj) => obj.json())
-      .then((data) => {
-        renderForecast(data);
-      });
+    searchCity(inpValue);
   });
 
   form.addEventListener("click", (evt) => evt.preventDefault());
 }
 
+function searchCity(cityName) {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=b9e70f2f2cb65811737840f12d265388`
+  )
+    .then((obj) => obj.json())
+    .then((data) => {
+      renderForecast(data);
+    });
+}
+
 function error() {
-  searchCity();
+  fetch(
+    `https://geo.ipify.org/api/v2/country?apiKey=at_OKC7QyCasldCxv4d9LhCFLTh4pYdU`
+  )
+    .then((obj) => obj.json())
+    .then((data) => searchCity(data.location.region))
+    .catch(() => {
+      inputCity();
+    });
 }
 
 function errorFind() {
@@ -77,5 +88,5 @@ function errorFind() {
     <button class="enter-city again">Try again</button>`;
 
   const buttonAgain = wrapper.querySelector(".again");
-  buttonAgain.addEventListener("click", searchCity);
+  buttonAgain.addEventListener("click", inputCity);
 }
