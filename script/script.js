@@ -2,13 +2,6 @@ const wrapper = document.querySelector("main");
 
 navigator.geolocation.getCurrentPosition(success, error);
 
-// function findLocation() {
-//   if (!navigator.geolocation) {
-//     alert("Ваш браузер не дружит с геолокацией...");
-//   } else {
-//     navigator.geolocation.getCurrentPosition(success);
-//   }
-// }
 
 function success(position) {
   const { longitude, latitude } = position.coords;
