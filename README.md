@@ -12,5 +12,5 @@ function searchCity(cityName) {
 }
 >
 
-![скриншот сайта]["./web_weather.png]
+![скриншот сайта]["./examples/web_weather.png"]
 
